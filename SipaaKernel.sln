@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SipaaKernel", "SipaaKernel\SipaaKernel.csproj", "{8C02983A-5062-44C1-8D9D-1DB717ED64AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SipaaKernel.Core", "SipaaKernel.Core\SipaaKernel.Core.csproj", "{381EFC86-5937-4B56-B034-DB847DA63A54}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C02983A-5062-44C1-8D9D-1DB717ED64AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C02983A-5062-44C1-8D9D-1DB717ED64AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C02983A-5062-44C1-8D9D-1DB717ED64AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C02983A-5062-44C1-8D9D-1DB717ED64AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{381EFC86-5937-4B56-B034-DB847DA63A54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{381EFC86-5937-4B56-B034-DB847DA63A54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{381EFC86-5937-4B56-B034-DB847DA63A54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{381EFC86-5937-4B56-B034-DB847DA63A54}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E984097B-23BD-40A6-914A-9A42BFC49BA9}
+	EndGlobalSection
+EndGlobal
