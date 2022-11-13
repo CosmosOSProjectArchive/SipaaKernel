@@ -17,6 +17,9 @@
         <Profile>VMware</Profile>
         <Description>Use VMware Player or Workstation to deploy and debug.</Description>
         <PxeInterface>192.168.0.8</PxeInterface>
+        <CompileVBEMultiboot>True</CompileVBEMultiboot>
+        <VBEResolution>800x600x32</VBEResolution>
+        <DebugEnabled>False</DebugEnabled>
     </PropertyGroup>
 
     <ItemGroup>
@@ -27,6 +30,15 @@
 
     <ItemGroup>
       <ProjectReference Include="..\SipaaKernel.Core\SipaaKernel.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="PrismGL2D">
+        <HintPath>..\Dependencies\PrismGL2D.dll</HintPath>
+      </Reference>
+      <Reference Include="PrismGL3D">
+        <HintPath>..\Dependencies\PrismGL3D.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

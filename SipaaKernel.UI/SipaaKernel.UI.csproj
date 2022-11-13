@@ -10,4 +10,13 @@
     <PackageReference Include="Cosmos.System2" Version="0.1.0-localbuild20221102120619" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="PrismGL2D">
+      <HintPath>..\Dependencies\PrismGL2D.dll</HintPath>
+    </Reference>
+    <Reference Include="PrismGL3D">
+      <HintPath>..\Dependencies\PrismGL3D.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
