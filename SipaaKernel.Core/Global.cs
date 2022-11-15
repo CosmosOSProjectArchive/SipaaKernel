@@ -73,6 +73,7 @@ namespace SipaaKernel.Core
             try
             {
                 var fs = new CosmosVFS();
+                
                 VFSManager.RegisterVFS(fs, false);
             }catch (Exception ex)
             {

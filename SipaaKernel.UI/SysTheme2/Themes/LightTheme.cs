@@ -9,7 +9,8 @@ namespace SipaaKernel.UI.SysTheme2.Themes
 {
     public class LightTheme : Theme
     {
-        protected override ColorDictionnary InitColorDictionnary()
+        /** original version
+         protected override ColorDictionnary InitColorDictionnary()
         {
             ColorDictionnary cd = new ColorDictionnary();
             cd.AccentIdle = Color.FromARGB(255, 73, 9, 158);
@@ -25,6 +26,29 @@ namespace SipaaKernel.UI.SysTheme2.Themes
             cd.Component = Color.FromARGB(255, 210, 210, 210);
 
             cd.Foreground = Color.FromARGB(255, 0, 0, 0);
+
+            this.BorderRadius = 0;
+            this.CenterWindowTitle = false;
+
+            return cd;
+        }
+         **/
+        protected override ColorDictionnary InitColorDictionnary()
+        {
+            ColorDictionnary cd = new ColorDictionnary();
+            cd.AccentIdle = Color.FromARGB(128, 73, 9, 158);
+            cd.AccentHover = Color.FromARGB(128, 57, 7, 122);
+            cd.AccentClicked = Color.FromARGB(128, 39, 6, 82);
+            cd.AccentForeground = Color.White;
+
+            cd.WidgetIdle = Color.FromARGB(128, 250, 250, 250);
+            cd.WidgetHover = Color.FromARGB(128, 227, 227, 228);
+            cd.WidgetClicked = Color.FromARGB(128, 207, 207, 208);
+
+            cd.WindowBackground = Color.FromARGB(128, 230, 230, 230);
+            cd.Component = Color.FromARGB(128, 210, 210, 210);
+
+            cd.Foreground = Color.Black;
 
             this.BorderRadius = 0;
             this.CenterWindowTitle = false;
