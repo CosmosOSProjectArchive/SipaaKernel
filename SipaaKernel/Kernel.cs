@@ -9,15 +9,14 @@ using PrismGL3D.Types;
 using static Cosmos.HAL.PCIDevice;
 using PrismGL2D;
 using Cosmos.Core;
+using SipaaKernel.UI.Widgets;
 
 namespace SipaaKernel
 {
     public class Kernel : Sys.Kernel
     {
         VBECanvas c;
-        Engine e;
-        Mesh cube;
-
+        Button b;
         protected override void BeforeRun()
         {
             Core.Global.Boot(false);
@@ -26,11 +25,23 @@ namespace SipaaKernel
             c = new();
             Sys.MouseManager.ScreenWidth = VBE.getModeInfo().width;
             Sys.MouseManager.ScreenHeight= VBE.getModeInfo().height;
+            b = new();
+            b.Width = 150;
+            b.Height = 40;
+            b.X = 30;
+            b.Y = 30;
+            b.Text = "Shutdown";
+            b.OnClick = (x, y) =>
+            {
+                Sys.Power.Shutdown();
+            };
         }
 
         protected override void Run()
         {
             c.Clear(Color.Black);
+            b.OnDraw(c);
+            b.OnUpdate();
             c.DrawFilledRectangle((int)Sys.MouseManager.X, (int)Sys.MouseManager.Y, 8, 12, 0, Color.White);
             c.DrawString(10, 10, $"{c.GetFPS()} FPS", Font.Fallback, Color.White);
             c.Update();

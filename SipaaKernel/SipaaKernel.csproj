@@ -30,6 +30,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\SipaaKernel.Core\SipaaKernel.Core.csproj" />
+      <ProjectReference Include="..\SipaaKernel.UI\SipaaKernel.UI.csproj" />
     </ItemGroup>
 
     <ItemGroup>
