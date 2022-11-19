@@ -27,11 +27,11 @@ namespace SipaaKernel.UI.SysTheme2
             switch (state)
             {
                 case WidgetState.Idle:
-                    return ColorDictionnary.AccentIdle;
+                    return ColorDictionnary.AccentIdle.RemoveAlphaIfIsVM();
                 case WidgetState.Hovered:
-                    return ColorDictionnary.AccentHover;
+                    return ColorDictionnary.AccentHover.RemoveAlphaIfIsVM();
                 case WidgetState.Clicked:
-                    return ColorDictionnary.AccentClicked;
+                    return ColorDictionnary.AccentClicked.RemoveAlphaIfIsVM();
             }
             return null;
         }
@@ -44,25 +44,25 @@ namespace SipaaKernel.UI.SysTheme2
             switch (state)
             {
                 case WidgetState.Idle:
-                    return ColorDictionnary.WidgetIdle;
+                    return ColorDictionnary.WidgetIdle.RemoveAlphaIfIsVM();
                 case WidgetState.Hovered:
-                    return ColorDictionnary.WidgetHover;
+                    return ColorDictionnary.WidgetHover.RemoveAlphaIfIsVM();
                 case WidgetState.Clicked:
-                    return ColorDictionnary.WidgetClicked;
+                    return ColorDictionnary.WidgetClicked.RemoveAlphaIfIsVM();
             }
             return null;
         }
         public Color GetWindowBackgroundColor()
         {
-            return ColorDictionnary.WindowBackground;
+            return ColorDictionnary.WindowBackground.RemoveAlphaIfIsVM();
         }
         public Color GetComponentBackgroundColor()
         {
-            return ColorDictionnary.Component;
+            return ColorDictionnary.Component.RemoveAlphaIfIsVM();
         }
         public Color GetForegroundColor()
         {
-            return ColorDictionnary.Foreground;
+            return ColorDictionnary.Foreground.RemoveAlphaIfIsVM();
         }
 
         public ColorDictionnary GetColorDictionnary()
