@@ -11,22 +11,28 @@ using PrismGL2D;
 using Cosmos.Core;
 using SipaaKernel.UI.Widgets;
 using System.IO;
+using SipaaKernel.UI;
 
 namespace SipaaKernel
 {
     public class Kernel : Sys.Kernel
     {
-        VBECanvas c;
-        Button b, b2;
-        Setup s;
+        static VBECanvas c;
+        static SKDE skde;
 
         /// <summary>
-        /// Create a file to describe a kernel panic and reboot.
+        /// Show bugcheck screen (also called kernel panic)
         /// </summary>
         public static void KernelPanic(uint error)
         {
-            File.Create(@"0:\SKPANIC.DAT");
-            File.WriteAllText(@"0:\SKPANIC.DAT", $"{error}");
+            c.Clear(Color.Black);
+            c.DrawImage((int)c.Width / 2 - (int)Assets.KernelPanicBitmap.Width / 2, (int)c.Height / 2 - (int)Assets.KernelPanicBitmap.Height / 2, Assets.KernelPanicBitmap, false);
+            c.DrawString(10, 10,
+                $"{OSInfo.OSName} {OSInfo.OSVersion} (build {OSInfo.OSBuild})\n" +
+                $"{CPU.GetCPUBrandString()} with {CPU.GetAmountOfRAM()}mb memory.\n" +
+                $"Kernel panic error code : {File.ReadAllText(@"0:\SKPANIC.DAT")}", Font.Fallback, Color.White);
+            c.Update();
+            Console.ReadKey();
             Sys.Power.Reboot();
         }
 
@@ -34,20 +40,6 @@ namespace SipaaKernel
         {
             // Init graphics
             c = new();
-
-            // Verify if a kernel panic happened at the last session.
-            if (File.Exists(@"0:\SKPANIC.DAT"))
-            {
-                c.Clear(Color.Black);
-                c.DrawImage((int)c.Width / 2 - (int)Assets.KernelPanicBitmap.Width / 2, (int)c.Height / 2 - (int)Assets.KernelPanicBitmap.Height / 2, Assets.KernelPanicBitmap, false);
-                c.DrawString(10, 10,
-                    $"{OSInfo.OSName} {OSInfo.OSVersion} (build {OSInfo.OSBuild})\n" +
-                    $"{CPU.GetCPUBrandString()} with {CPU.GetAmountOfRAM()}mb memory.\n" +
-                    $"Kernel panic error code : {File.ReadAllText(@"0:\SKPANIC.DAT")}", Font.Fallback, Color.White);
-                c.Update();
-                Console.ReadKey();
-        
-            }
 
             // Init boot screen
             Sys.MouseManager.ScreenWidth = VBE.getModeInfo().width;
@@ -66,28 +58,8 @@ namespace SipaaKernel
 
             // Resize the wallpaper & Init a button
             Assets.Wallpaper = Assets.Wallpaper.Scale(VBE.getModeInfo().width, VBE.getModeInfo().height);
-            b = new();
-            b.Width = 150;
-            b.Height = 40;
-            b.X = 40;
-            b.Y = 40;
-            b.Text = "Shutdown";
-            b.OnClick = (x, y) =>
-            {
-                Sys.Power.Shutdown();
-            };
-
-            b2 = new();
-            b2.Width = 150;
-            b2.Height = 40;
-            b2.X = 40;
-            b2.Y = 90;
-            b2.Text = "KPanic";
-            b2.OnClick = (x, y) =>
-            {
-                KernelPanic(0x00);
-            };
-
+            skde = new();
+            skde.AddAppToLauncher(new TestApp());
             Cosmos.HAL.Global.PIT.Wait(10000);
         }
 
@@ -95,13 +67,19 @@ namespace SipaaKernel
         {
             try
             {
-                //c.Clear(Color.Black);
+
                 c.DrawImage(0, 0, Assets.Wallpaper, false);
-                b.OnDraw(c);
-                b.OnUpdate();
-                b2.OnDraw(c);
-                b2.OnUpdate();
-                c.DrawString(10, (int)c.Height - 34, $"{c.GetFPS()} FPS", Font.Fallback, Color.White);
+
+                foreach (var w in WindowManager.Windows)
+                {
+                    w.Draw(c);
+                    w.Update();
+                }
+
+                skde.Draw(c);
+                skde.Update();
+
+                c.DrawString(10, (int)c.Height - 64, $"{c.GetFPS()} FPS", Font.Fallback, Color.White);
                 c.DrawFilledRectangle((int)Sys.MouseManager.X, (int)Sys.MouseManager.Y, 8, 12, 0, Color.White);
                 c.Update();
             }catch (Exception e)

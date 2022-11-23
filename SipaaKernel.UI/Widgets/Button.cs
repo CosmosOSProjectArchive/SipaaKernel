@@ -12,6 +12,7 @@ namespace SipaaKernel.UI.Widgets
     public class Button : Widget
     {
         MouseState LastMouseState;
+        public Graphics Image { get; set; }
 
         public override Graphics RenderWidget()
         {
@@ -27,7 +28,19 @@ namespace SipaaKernel.UI.Widgets
                 {
                     _Graphics.DrawFilledRectangle(0, 0, Width, Height, (uint)GetCurrentTheme().GetBorderRadius(), GetCurrentTheme().GetAccentBackgroundColor(CurrentWidgetState));
                 }
-                _Graphics.DrawString((int)Width / 2, (int)Height / 2, Text, Font.Fallback, GetCurrentTheme().GetAccentForegroundColor(), true);
+
+                if (Image != null && String.IsNullOrEmpty(Text))
+                {
+                    _Graphics.DrawImage((int)_Graphics.Width / 2 - (int)Image.Width / 2, (int)_Graphics.Height / 2 - (int)Image.Height / 2, Image, true);
+                }else if (Image != null && !String.IsNullOrEmpty(Text))
+                {
+                    _Graphics.DrawImage(8, (int)_Graphics.Height / 2 - (int)Image.Height / 2, Image, true);
+                    _Graphics.DrawString((int)Width / 2, (int)Height / 2, Text, Font.Fallback, GetCurrentTheme().GetAccentForegroundColor(), true);
+                }
+                else if (Image == null)
+                {
+                    _Graphics.DrawString((int)Width / 2, (int)Height / 2, Text, Font.Fallback, GetCurrentTheme().GetAccentForegroundColor(), true);
+                }
             }
             else
             {
@@ -39,7 +52,19 @@ namespace SipaaKernel.UI.Widgets
                 {
                     _Graphics.DrawFilledRectangle(0, 0, Width, Height, (uint)GetCurrentTheme().GetBorderRadius(), GetCurrentTheme().GetWidgetBackgroundColor(CurrentWidgetState));
                 }
-                _Graphics.DrawString((int)Width / 2, (int)Height / 2, Text, Font.Fallback, GetCurrentTheme().GetForegroundColor(), true);
+                if (Image != null && String.IsNullOrEmpty(Text))
+                {
+                    _Graphics.DrawImage((int)_Graphics.Width / 2 - (int)Image.Width / 2, (int)_Graphics.Height / 2 - (int)Image.Height / 2, Image, true);
+                }
+                else if (Image != null && !String.IsNullOrEmpty(Text))
+                {
+                    _Graphics.DrawImage(8, (int)_Graphics.Height / 2 - (int)Image.Height / 2, Image, true);
+                    _Graphics.DrawString((int)Width / 2, (int)Height / 2, Text, Font.Fallback, GetCurrentTheme().GetForegroundColor(), true);
+                }
+                else if (Image == null)
+                {
+                    _Graphics.DrawString((int)Width / 2, (int)Height / 2, Text, Font.Fallback, GetCurrentTheme().GetForegroundColor(), true);
+                }
             }
             return _Graphics;
         }
