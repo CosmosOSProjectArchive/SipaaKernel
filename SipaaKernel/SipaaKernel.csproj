@@ -25,6 +25,8 @@
     <ItemGroup>
       <None Remove="Resources\cursor.bmp" />
       <None Remove="Resources\kernelpanic.bmp" />
+      <None Remove="Resources\SiPaint.bmp" />
+      <None Remove="Resources\SiPaint.png" />
       <None Remove="Resources\skboot.bmp" />
       <None Remove="Resources\startup.wav" />
       <None Remove="Resources\startupv1.wav" />
@@ -34,6 +36,8 @@
     <ItemGroup>
       <EmbeddedResource Include="Resources\cursor.bmp" />
       <EmbeddedResource Include="Resources\kernelpanic.bmp" />
+      <EmbeddedResource Include="Resources\SiPaint.bmp" />
+      <EmbeddedResource Include="Resources\SiPaint.png" />
       <EmbeddedResource Include="Resources\skboot.bmp" />
       <EmbeddedResource Include="Resources\startup.wav" />
       <EmbeddedResource Include="Resources\startupv1.wav" />
@@ -52,6 +56,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Reference Include="PrismBinary">
+        <HintPath>..\Dependencies\PrismBinary.dll</HintPath>
+      </Reference>
       <Reference Include="PrismGL2D">
         <HintPath>..\Dependencies\PrismGL2D.dll</HintPath>
       </Reference>

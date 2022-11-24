@@ -16,8 +16,9 @@ namespace SipaaKernel
         [ManifestResourceStream(ResourceName = Base + "skboot.bmp")] public readonly static byte[] BootB;
         [ManifestResourceStream(ResourceName = Base + "startupv1.wav")] public readonly static byte[] StartupWave;
         [ManifestResourceStream(ResourceName = Base + "kernelpanic.bmp")] public readonly static byte[] KernelPanicBmp;
-
+        [ManifestResourceStream(ResourceName = Base + "SiPaint.bmp")] public readonly static byte[] SiPaintAppLogoByte;
         // Images
+        public static Graphics SiPaintAppLogo = Image.FromBitmap(SiPaintAppLogoByte);
         public static Graphics Wallpaper = Image.FromBitmap(WallpaperB);
         public static Graphics BootBitmap = Image.FromBitmap(BootB);
         public static Graphics Cursor = Image.FromBitmap(CursorB);

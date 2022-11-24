@@ -74,6 +74,7 @@ namespace SipaaKernel.UI.Widgets
             if (this.CurrentWidgetState == WidgetState.Clicked && MouseManager.MouseState != LastMouseState)
                 if (OnClick != null)
                     OnClick.Invoke((int)MouseManager.X, (int)MouseManager.Y);
+            LastMouseState = MouseManager.MouseState;
             base.OnUpdate();
         }
     }

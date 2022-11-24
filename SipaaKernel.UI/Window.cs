@@ -44,6 +44,8 @@ namespace SipaaKernel.UI
         public Window()
         {
             Handle = (uint)new Random().Next(1, int.MaxValue);
+
+            WindowManager.Windows.Add(this);
         }
 
         // Methods

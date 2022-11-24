@@ -12,6 +12,7 @@ using Cosmos.Core;
 using SipaaKernel.UI.Widgets;
 using System.IO;
 using SipaaKernel.UI;
+using SipaaKernel.CoreApps;
 
 namespace SipaaKernel
 {
@@ -59,7 +60,7 @@ namespace SipaaKernel
             // Resize the wallpaper & Init a button
             Assets.Wallpaper = Assets.Wallpaper.Scale(VBE.getModeInfo().width, VBE.getModeInfo().height);
             skde = new();
-            skde.AddAppToLauncher(new TestApp());
+            skde.AddAppToLauncher(new SiPaintApp());
             Cosmos.HAL.Global.PIT.Wait(10000);
         }
 
