@@ -1,5 +1,6 @@
 ﻿using Cosmos.System;
 using PrismGL2D;
+using SipaaKernel.UI.Widgets;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,9 @@ namespace SipaaKernel.UI
         // Window identification
         public uint Handle { get; set; }
 
+        // Window buttons
+        private Button closeBtn;
+
         // Window dragging
         private bool IsWindowMoving;
         private bool pressed;
@@ -44,6 +48,14 @@ namespace SipaaKernel.UI
         public Window()
         {
             Handle = (uint)new Random().Next(1, int.MaxValue);
+
+            closeBtn = new();
+            closeBtn.Text = "X";
+            closeBtn.Width = 32;
+            closeBtn.Height = 32;
+            closeBtn.X = X + (int)Width - (int)closeBtn.Width;
+            closeBtn.Y = Y;
+            closeBtn.IsAccentued = true;
 
             WindowManager.Windows.Add(this);
         }
@@ -62,6 +74,7 @@ namespace SipaaKernel.UI
                 {
                     g.DrawFilledRectangle(X, Y, Width, TitleBarHeight, (uint)t.GetBorderRadius(), t.GetAccentBackgroundColor(WidgetState.Idle));
                     g.DrawString(X + (int)Width / 2, Y + (int)TitleBarHeight / 2, Title, Font.Fallback, t.GetAccentForegroundColor(), true);
+                    closeBtn.OnDraw(g);
                 }
 
                 if (OnDraw != null) // NEVER INVOKE AN EVENT WITHOUT THIS LINE
@@ -78,7 +91,7 @@ namespace SipaaKernel.UI
         {
             if (Visible)
             {
-                // Window dragging
+                // Window dragging & title bar buttons
                 if (EnableWindowFrame)
                 {
                     if (MouseManager.MouseState == MouseState.Left)
@@ -108,10 +121,16 @@ namespace SipaaKernel.UI
                         X = (int)MouseManager.X - px;
                         Y = (int)MouseManager.Y - py;
                     }
+
+
+                    closeBtn.X = X + (int)Width - (int)closeBtn.Width;
+                    closeBtn.Y = Y;
+                    closeBtn.OnUpdate();
                 }
 
                 if (OnUpdate != null) // NEVER INVOKE AN EVENT WITHOUT THIS LINE
                     OnUpdate.Invoke();
+
 
                 foreach (Widget w in Widgets)
                 {
