@@ -10,7 +10,7 @@ using PrismGL3D.Types;
 using SipaaKernel.Core;
 using SipaaKernel.UI;
 
-namespace SipaaKernel.CoreApps
+namespace SipaaKernel.System.CoreApps
 {
     internal class SiPaintApp : Application
     {

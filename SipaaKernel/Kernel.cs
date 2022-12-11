@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 using Sys = Cosmos.System;
 using SipaaKernel.Core;
@@ -12,13 +11,18 @@ using Cosmos.Core;
 using SipaaKernel.UI.Widgets;
 using System.IO;
 using SipaaKernel.UI;
-using SipaaKernel.CoreApps;
+using SipaaKernel.System.CoreApps;
+using SipaaKernel.System;
+using SipaaKernel.System.Shard2;
+using SipaaKernel.System.Commands;
 
 namespace SipaaKernel
 {
     public class Kernel : Sys.Kernel
     {
-        static VBECanvas c;
+        public static VBECanvas c;
+        public static bool isInGui = false;
+        public static Console Console;
         static SKDE skde;
 
         /// <summary>
@@ -33,7 +37,7 @@ namespace SipaaKernel
                 $"{CPU.GetCPUBrandString()} with {CPU.GetAmountOfRAM()}mb memory.\n" +
                 $"Kernel panic error code : {File.ReadAllText(@"0:\SKPANIC.DAT")}", Font.Fallback, Color.White);
             c.Update();
-            Console.ReadKey();
+            global::System.Console.ReadKey();
             Sys.Power.Reboot();
         }
 
@@ -62,28 +66,43 @@ namespace SipaaKernel
             skde = new();
             skde.AddAppToLauncher(new SiPaintApp());
             Cosmos.HAL.Global.PIT.Wait(10000);
+
+            Console = new(c.Width, c.Height);
+            CommandRunner.Commands.Add(new StartSKDE());
+            CommandRunner.Commands.Add(new SysInfo());
+            CommandRunner.Commands.Add(new Shutdown());
+            Console.WriteLine($"SipaaKernel (Version {OSInfo.OSVersion}, Build {OSInfo.OSBuild})");
+            Console.WriteLine($"Merry Christmas, SipaaKernel User!");
+            Console.BeforeCommand();
         }
 
         protected override void Run()
         {
             try
             {
-
-                c.DrawImage(0, 0, Assets.Wallpaper, false);
-
-                foreach (var w in WindowManager.Windows)
+                if (isInGui)
                 {
-                    w.Draw(c);
-                    w.Update();
+                    c.DrawImage(0, 0, Assets.Wallpaper, false);
+
+                    foreach (var w in WindowManager.Windows)
+                    {
+                        w.Draw(c);
+                        w.Update();
+                    }
+
+                    skde.Draw(c);
+                    skde.Update();
+
+                    c.DrawString(10, (int)c.Height - 64, $"{c.GetFPS()} FPS", Font.Fallback, Color.White);
+                    c.DrawFilledRectangle((int)Sys.MouseManager.X, (int)Sys.MouseManager.Y, 8, 12, 0, Color.White);
+                    c.Update();
                 }
-
-                skde.Draw(c);
-                skde.Update();
-
-                c.DrawString(10, (int)c.Height - 64, $"{c.GetFPS()} FPS", Font.Fallback, Color.White);
-                c.DrawFilledRectangle((int)Sys.MouseManager.X, (int)Sys.MouseManager.Y, 8, 12, 0, Color.White);
-                c.Update();
-            }catch (Exception e)
+                else
+                {
+                    Console.Update();
+                    c.Update();
+                }
+            }catch (global::System.Exception e)
             {
                 KernelPanic(0x192833);
             }

@@ -23,6 +23,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Remove="consolefont.psf" />
       <None Remove="Resources\cursor.bmp" />
       <None Remove="Resources\kernelpanic.bmp" />
       <None Remove="Resources\SiPaint.bmp" />
@@ -34,6 +35,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <EmbeddedResource Include="Resources\consolefont.psf" />
       <EmbeddedResource Include="Resources\cursor.bmp" />
       <EmbeddedResource Include="Resources\kernelpanic.bmp" />
       <EmbeddedResource Include="Resources\SiPaint.bmp" />
