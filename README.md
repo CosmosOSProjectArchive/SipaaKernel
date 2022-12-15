@@ -44,4 +44,4 @@ Here is the link (Send a message in Discord (RaphMar2019#0001 or GreenSoup Dev#6
 https://discord.gg/aYRG9pq9bd
 
 # Licensing
-### This project is licensed Under the GPL-2.0 licence.
+### This project is licensed Under the MIT licence.
