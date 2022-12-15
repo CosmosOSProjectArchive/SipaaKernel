@@ -42,3 +42,6 @@ SipaaKernel have a Discord Server too!
 
 Here is the link (Send a message in Discord (RaphMar2019#0001 or GreenSoup Dev#6118) if the link is not working).
 https://discord.gg/aYRG9pq9bd
+
+# Licensing
+### This project is licensed Under the GPL-2.0 licence.
