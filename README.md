@@ -7,7 +7,7 @@ Started in August 2022 with SipaaKernel V2, SipaaKernel is one of the best Cosmo
 * A working VBE graphics driver with alpha support
     - A UI library
     - SKDE (the desktop environment of SipaaKernel)
-* File system support than is not used lol
+* File system support (Is not used for now)
 * Network support (not on every network card)
 * Audio support (not used)
 
@@ -16,7 +16,7 @@ Started in August 2022 with SipaaKernel V2, SipaaKernel is one of the best Cosmo
 ### Minimum:
 
 * Random Access Memory (RAM) : 256mb or above
-* Processor : Any processor with 500Hz or better
+* Processor : Any processor with 450Hz or better (the Intel Pentium 2 450Hz is one of those)
 * Graphics : 2mb or above
 * Audio : ICH AC97 audio card or better
 * A USB disk of 64mb or above
