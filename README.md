@@ -13,11 +13,21 @@ Started in August 2022 with SipaaKernel V2, SipaaKernel is one of the best Cosmo
 
 ## Requirements to run SipaaKernel
 
-* Random Access Memory (RAM) : 256mb or above (2048mb recommended)
-* Processor : Any processor with 500Hz or better (Pentium 4 Northwood 2.2GHz Recommended)
-* Graphics : 2mb (3D acceleration recommended)
+### Minimum:
+
+* Random Access Memory (RAM) : 256mb or above
+* Processor : Any processor with 500Hz or better
+* Graphics : 2mb or above
 * Audio : ICH AC97 audio card or better
 * A USB disk of 64mb or above
+
+### Recommended:
+
+* Random Access Memory (RAM) : 2048mb or above
+* Processor : Pentium 4 Northwood 2.0GHz or better
+* Graphics : 4mb or above with 3D acceleration
+* Audio : ICH AC97 audio card or better
+* A USB disk of 128mb or above
 
 ## Requeriments to compile SipaaKernel
 
