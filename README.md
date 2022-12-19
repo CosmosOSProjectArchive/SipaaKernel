@@ -40,7 +40,8 @@ You need :
 ## Join our Discord!
 SipaaKernel have a Discord Server too!
 
-Here is the link (Send a Discord message to RaphMar2019#0001 or GreenSoup Dev#6118 if the link is not working).
+Here is the link (Send a Discord message to RaphMar2019
+#1374 or GreenSoup Dev#6118 if the link is not working).
 https://discord.gg/aYRG9pq9bd
 
 ## Contact
