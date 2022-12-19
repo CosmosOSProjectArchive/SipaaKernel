@@ -16,7 +16,7 @@ Started in August 2022 with SipaaKernel V2, SipaaKernel is one of the best Cosmo
 ### Minimum:
 
 * Random Access Memory (RAM) : 256mb or above.
-* Processor : Any processor with 450Hz or better (the Intel Pentium 2 450Hz for example).
+* Processor : Intel Pentium 2 450Hz or better.
 * Graphics : 2mb or above.
 * Audio : ICH AC97 audio card or better.
 * A USB, a CD or a DVD of 64mb or above.
