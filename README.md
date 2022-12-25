@@ -31,7 +31,7 @@ Started in August 2022 with SipaaKernel V2, SipaaKernel is one of the best Cosmo
 
 ## Requeriments to compile SipaaKernel.
 
-You need :
+You need:
 
 * A good PC than can compile C#.
 * The COSMOS Developer Kit.
