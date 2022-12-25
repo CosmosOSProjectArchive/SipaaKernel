@@ -46,7 +46,7 @@ https://discord.gg/MsBBPx4Wsa
 
 ## Contact
 
-if you have any question, send a Discord message to RaphMar2019#0001 or GreenSoup Dev#6118.
+if you have any question, send a Discord message to RaphMar2022#6488 or GreenSoup Dev#6479.
 
 # Licensing
 ### This project is licensed Under the MIT licence.
