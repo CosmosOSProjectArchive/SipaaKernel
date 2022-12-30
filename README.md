@@ -37,13 +37,6 @@ You need:
 * The COSMOS Developer Kit.
 * Visual Studio 2022 with Extensions Workload.
 
-## Join our Discord!
-SipaaKernel have a Discord Server too!
-
-Here is the link (Send a Discord message to RaphMar2019
-#1374 or GreenSoup Dev#6118 if the link is not working).
-https://discord.gg/MsBBPx4Wsa
-
 ## Contact
 
 if you have any question, send a Discord message to RaphMar2022#6488 or GreenSoup Dev#6479.
