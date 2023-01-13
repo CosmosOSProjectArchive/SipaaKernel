@@ -16,7 +16,7 @@ Started in August 2022 with SipaaKernel V2, SipaaKernel is one of the best Cosmo
 ### Minimum:
 
 * Random Access Memory (RAM) : 256mb or above.
-* Processor : Intel Pentium 2 450Hz or better.
+* Processor : Intel Pentium 2 450Hz / AMD k6-2 450Hz or better.
 * Graphics : 2mb or above.
 * Audio : ICH AC97 audio card.
 * A USB, a CD or a DVD of 16mb or above.
@@ -24,7 +24,7 @@ Started in August 2022 with SipaaKernel V2, SipaaKernel is one of the best Cosmo
 ### Recommended:
 
 * Random Access Memory (RAM) : 2048mb or above.
-* Processor : Pentium 4 Northwood 2.0GHz or better.
+* Processor : Pentium 4 Northwood 2.0GHz / AMD Athlon XP 2400+ or better.
 * Graphics : 4mb or above with 3D acceleration.
 * Audio : ICH AC97 audio card.
 * A USB, a CD or a DVD of 32mb or above.
@@ -39,13 +39,14 @@ You need:
 
 ## Contact
 
-if you have any question, send a Discord message to RaphMar2022#6488 or GreenSoup Dev#6479.
+if you have any question, send a Discord message to RaphMar2022#6488 or GreenSoup Developer#4806.
 
 ## ⚠️ WARNING
-SipaaKernel is in developement and it is not recommanded to run it on your
-main PC. (only if you want your PC to become a potato lol)
+SipaaKernel is in developement and it is not recommended to run it on your
+main PC. (only if you want your PC to become a expensive potato lol)
 
 But you can try it on a second PC, a virtual machine!
+or even in a old PC!
 
 # Licensing
 ### This project is licensed Under the MIT licence.
