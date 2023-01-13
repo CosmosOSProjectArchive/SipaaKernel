@@ -1,13 +1,14 @@
-﻿using Cosmos.System.Graphics;
-using Cosmos.System;
+﻿using Cosmos.System;
+using sys = System;
+using SipaaGL;
+using SipaaGL.Extentions;
+using Cosmos.Core;
+using static Cosmos.HAL.Global;
+using IL2CPU.API.Attribs;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PrismGL2D;
-using SipaaKernel.System.Shard2;
 using SipaaKernel.System.GraphicsExtensions;
+using SipaaKernel.System.Shard2;
+using System.Collections.Generic;
 
 namespace SipaaKernel.System
 {
@@ -162,7 +163,7 @@ namespace SipaaKernel.System
 
             mCols = mWidth / Assets.ConsoleFont.Width - 1;
             mRows = mHeight / Assets.ConsoleFont.Height - 2;
-            
+
 
             ClearText();
 
@@ -216,7 +217,8 @@ namespace SipaaKernel.System
                                 WriteLine("Press any key to reboot.");
                                 global::System.Console.ReadKey();
                                 Cosmos.System.Power.Reboot();
-                            }else if (result == CommandResult.NeedsUpdateMethodExit)
+                            }
+                            else if (result == CommandResult.NeedsUpdateMethodExit)
                             {
                                 return;
                             }
@@ -311,7 +313,7 @@ namespace SipaaKernel.System
                     if (Text[i][j].Char == null || Text[i][j].Char == '\n')
                         continue;
 
-                    Graphics.WriteByte((char)Text[i][j].Char, (int)0 + j * Assets.ConsoleFont.Width, (int)0+ i * Assets.ConsoleFont.Height, Text[i][j].Colour);
+                    Graphics.WriteByte((char)Text[i][j].Char, (int)0 + j * Assets.ConsoleFont.Width, (int)0 + i * Assets.ConsoleFont.Height, Text[i][j].Colour);
                 }
             }
 
@@ -479,13 +481,10 @@ namespace SipaaKernel.System
         {
             /**Foreground = ConsoleColor.Blue;
             Write(UserLevel.TypeUser);
-
             Foreground = ConsoleColor.Yellow;
             Write(Kernel.userLogged);
-
             Foreground = ConsoleColor.DarkGray;
             Write("@");
-
             Foreground = ConsoleColor.Blue;
             Write(Kernel.ComputerName);**/
 

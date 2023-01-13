@@ -1,4 +1,4 @@
-﻿using PrismGL2D;
+﻿using SipaaGL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +12,7 @@ namespace SipaaKernel.UI.Widgets
     {
         public override void OnDraw(Graphics g)
         {
-            g.DrawString(X, Y, Text, Font.Fallback, GetCurrentTheme().GetForegroundColor());
+            g.DrawStringBF(X, Y, Text, BitFont.Fallback, GetCurrentTheme().GetForegroundColor());
         }
     }
 }

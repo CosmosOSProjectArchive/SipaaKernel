@@ -1,30 +1,30 @@
-﻿using Cosmos.System.Graphics.Fonts;
+﻿using psff = Cosmos.System.Graphics.Fonts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SipaaKernelConsoleEdition.GraphicsExtensions
+namespace SipaaGL
 {
     /// <summary>
-    /// PC Screen Font renderer for Terminal.cs's Graphics 
+    /// PC Screen Font font renderer
     /// </summary>
-    public static class PSFRenderer
+    public static class PSFFont
     {
         /// <summary>
         /// Draw string with the PCScreenFont renderer.
         /// </summary>
         /// <param name="str">string to draw.</param>
-        /// <param name="aFont">Font used.</param>
+        /// <param name="aFont">Font used to draw the string.</param>
         /// <param name="color">Color.</param>
         /// <param name="x">X coordinate.</param>
         /// <param name="y">Y coordinate.</param>
-        public static void DrawPSFString(this PrismGL2D.Graphics g, int x, int y, string str, Font aFont, PrismGL2D.Color color)
+        public static void DrawStringPSF(this Graphics g, int x, int y, string str, psff.Font aFont, Color color)
         {
             for (int i = 0; i < str.Length; i++)
             {
-                DrawPSFChar(g, x,y, str[i], aFont, color);
+                g.DrawCharPSF(x, y, str[i], aFont, color);
                 x += aFont.Width;
             }
         }
@@ -33,12 +33,12 @@ namespace SipaaKernelConsoleEdition.GraphicsExtensions
         /// <summary>
         /// Draw char with the PCScreenFont renderer.
         /// </summary>
-        /// <param name="str">char to draw.</param>
+        /// <param name="c">char to draw.</param>
         /// <param name="aFont">Font used.</param>
-        /// <param name="pen">Color.</param>
+        /// <param name="color">Color.</param>
         /// <param name="x">X coordinate.</param>
         /// <param name="y">Y coordinate.</param>
-        public static void DrawPSFChar(this PrismGL2D.Graphics g, int x, int y, char c, Font aFont, PrismGL2D.Color color)
+        public static void DrawCharPSF(this Graphics g, int x, int y, char c, psff.Font aFont, Color color)
         {
             int p = aFont.Height * (byte)c;
 
@@ -48,7 +48,7 @@ namespace SipaaKernelConsoleEdition.GraphicsExtensions
                 {
                     if (aFont.ConvertByteToBitAddres(aFont.Data[p + cy], cx + 1))
                     {
-                        g[(ushort)((x) + (aFont.Width - cx)), (ushort)((y) + cy)] = color;
+                        g[(ushort)(x + (aFont.Width - cx)), (ushort)(y + cy)] = color;
                     }
                 }
             }

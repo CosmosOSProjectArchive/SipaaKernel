@@ -11,9 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="PrismGL2D">
-      <HintPath>..\Dependencies\PrismGL2D.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\SipaaGL\SipaaGL.csproj" />
   </ItemGroup>
 
 </Project>

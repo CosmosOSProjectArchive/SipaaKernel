@@ -20,7 +20,7 @@ namespace SipaaKernel.System.GraphicsExtensions
         /// <param name="color">Color.</param>
         /// <param name="x">X coordinate.</param>
         /// <param name="y">Y coordinate.</param>
-        public static void DrawPSFString(this PrismGL2D.Graphics g, int x, int y, string str, Font aFont, PrismGL2D.Color color)
+        public static void DrawPSFString(this SipaaGL.Graphics g, int x, int y, string str, Font aFont, SipaaGL.Color color)
         {
             for (int i = 0; i < str.Length; i++)
             {
@@ -38,7 +38,7 @@ namespace SipaaKernel.System.GraphicsExtensions
         /// <param name="pen">Color.</param>
         /// <param name="x">X coordinate.</param>
         /// <param name="y">Y coordinate.</param>
-        public static void DrawPSFChar(this PrismGL2D.Graphics g, int x, int y, char c, Font aFont, PrismGL2D.Color color)
+        public static void DrawPSFChar(this SipaaGL.Graphics g, int x, int y, char c, Font aFont, SipaaGL.Color color)
         {
             int p = aFont.Height * (byte)c;
 

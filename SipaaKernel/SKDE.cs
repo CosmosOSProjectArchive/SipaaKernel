@@ -1,4 +1,4 @@
-﻿using PrismGL2D;
+﻿using SipaaGL;
 using SipaaKernel.UI;
 using SipaaKernel.UI.Widgets;
 using static SipaaKernel.UI.SysTheme2.ThemeManager;
@@ -49,7 +49,7 @@ namespace SipaaKernel
         {
             // Draw hour notch
             g.DrawFilledRectangle((int)g.Width / 2 - 50 / 2, 14, 50, 24, 4, UI.SysTheme2.ThemeManager.GetCurrentTheme().GetComponentBackgroundColor().RemoveAlphaIfIsVM());
-            g.DrawString((int)g.Width / 2, 14 + 24 / 2, $"{Cosmos.HAL.RTC.Hour}:{Cosmos.HAL.RTC.Minute}", Font.Fallback, UI.SysTheme2.ThemeManager.GetCurrentTheme().GetForegroundColor(), true);
+            g.DrawStringBF((int)g.Width / 2, 14 + 24 / 2, $"{Cosmos.HAL.RTC.Hour}:{Cosmos.HAL.RTC.Minute}", BitFont.Fallback, UI.SysTheme2.ThemeManager.GetCurrentTheme().GetForegroundColor(), true);
 
             // Draw launcher
 

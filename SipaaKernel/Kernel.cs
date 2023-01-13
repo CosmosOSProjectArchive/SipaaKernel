@@ -1,14 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Text;
-using Sys = Cosmos.System;
+﻿using Sys = Cosmos.System;
 using SipaaKernel.Core;
-using PrismGL3D;
-using PrismGL2D.Extentions;
-using PrismGL3D.Types;
-using static Cosmos.HAL.PCIDevice;
-using PrismGL2D;
+using SipaaGL;
+using SipaaGL.Extentions;
 using Cosmos.Core;
-using SipaaKernel.UI.Widgets;
 using System.IO;
 using SipaaKernel.UI;
 using SipaaKernel.System.CoreApps;
@@ -32,10 +26,10 @@ namespace SipaaKernel
         {
             c.Clear(Color.Black);
             c.DrawImage((int)c.Width / 2 - (int)Assets.KernelPanicBitmap.Width / 2, (int)c.Height / 2 - (int)Assets.KernelPanicBitmap.Height / 2, Assets.KernelPanicBitmap, false);
-            c.DrawString(10, 10,
+            c.DrawStringBF(10, 10,
                 $"{OSInfo.OSName} {OSInfo.OSVersion} (build {OSInfo.OSBuild})\n" +
                 $"{CPU.GetCPUBrandString()} with {CPU.GetAmountOfRAM()}mb memory.\n" +
-                $"Kernel panic error code : {File.ReadAllText(@"0:\SKPANIC.DAT")}", Font.Fallback, Color.White);
+                $"Kernel panic error code : {File.ReadAllText(@"0:\SKPANIC.DAT")}", BitFont.Fallback, Color.White);
             c.Update();
             global::System.Console.ReadKey();
             Sys.Power.Reboot();
@@ -71,8 +65,8 @@ namespace SipaaKernel
             CommandRunner.Commands.Add(new StartSKDE());
             CommandRunner.Commands.Add(new SysInfo());
             CommandRunner.Commands.Add(new Shutdown());
-            Console.WriteLine($"SipaaKernel (Version {OSInfo.OSVersion}, Build {OSInfo.OSBuild})");
-            Console.WriteLine($"Merry Christmas, SipaaKernel User!");
+            Console.WriteLine($"SipaaKernel Codename 'SipaaKernel V5' (Version {OSInfo.OSVersion}, Build {OSInfo.OSBuild})");
+            Console.WriteLine($"Happy new year, SipaaKernel User!");
             Console.BeforeCommand();
         }
 
@@ -83,6 +77,7 @@ namespace SipaaKernel
                 if (isInGui)
                 {
                     c.DrawImage(0, 0, Assets.Wallpaper, false);
+                    c.DrawStringBF(10, (int)c.Height - 112, $"{c.GetFPS()} FPS (This build has been compiled using SipaaGL)\nSipaaKernel Confidential Build. Any leaks found of this build\nwill become BIG PENALITIES. (Build " + OSInfo.OSBuild + ")", BitFont.Fallback, Color.White);
 
                     foreach (var w in WindowManager.Windows)
                     {
@@ -93,7 +88,6 @@ namespace SipaaKernel
                     skde.Draw(c);
                     skde.Update();
 
-                    c.DrawString(10, (int)c.Height - 64, $"{c.GetFPS()} FPS", Font.Fallback, Color.White);
                     c.DrawFilledRectangle((int)Sys.MouseManager.X, (int)Sys.MouseManager.Y, 8, 12, 0, Color.White);
                     c.Update();
                 }

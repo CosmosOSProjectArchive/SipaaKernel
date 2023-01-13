@@ -20,6 +20,8 @@
         <CompileVBEMultiboot>True</CompileVBEMultiboot>
         <VBEResolution>800x600x32</VBEResolution>
         <DebugEnabled>False</DebugEnabled>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <CompressionType>Gzip</CompressionType>
     </PropertyGroup>
 
     <ItemGroup>
@@ -53,20 +55,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\SipaaGL\SipaaGL.csproj" />
       <ProjectReference Include="..\SipaaKernel.Core\SipaaKernel.Core.csproj" />
       <ProjectReference Include="..\SipaaKernel.UI\SipaaKernel.UI.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Reference Include="PrismBinary">
-        <HintPath>..\Dependencies\PrismBinary.dll</HintPath>
-      </Reference>
-      <Reference Include="PrismGL2D">
-        <HintPath>..\Dependencies\PrismGL2D.dll</HintPath>
-      </Reference>
-      <Reference Include="PrismGL3D">
-        <HintPath>..\Dependencies\PrismGL3D.dll</HintPath>
-      </Reference>
     </ItemGroup>
 
 </Project>

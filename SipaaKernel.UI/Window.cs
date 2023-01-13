@@ -1,5 +1,5 @@
 ﻿using Cosmos.System;
-using PrismGL2D;
+using SipaaGL;
 using SipaaKernel.UI.Widgets;
 using System;
 using System.Collections.Generic;
@@ -73,7 +73,7 @@ namespace SipaaKernel.UI
                 if (EnableWindowFrame)
                 {
                     g.DrawFilledRectangle(X, Y, Width, TitleBarHeight, (uint)t.GetBorderRadius(), t.GetAccentBackgroundColor(WidgetState.Idle));
-                    g.DrawString(X + (int)Width / 2, Y + (int)TitleBarHeight / 2, Title, Font.Fallback, t.GetAccentForegroundColor(), true);
+                    g.DrawStringBF(X + (int)Width / 2, Y + (int)TitleBarHeight / 2, Title, BitFont.Fallback, t.GetAccentForegroundColor(), true);
                     closeBtn.OnDraw(g);
                 }
 

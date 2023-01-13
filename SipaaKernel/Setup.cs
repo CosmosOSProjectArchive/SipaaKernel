@@ -1,7 +1,7 @@
 ﻿using Cosmos.Core;
 using Cosmos.System.FileSystem.VFS;
-using PrismGL2D;
-using PrismGL2D.Extentions;
+using SipaaGL;
+using SipaaGL.Extentions;
 using SipaaKernel.Core;
 using SipaaKernel.UI.Widgets;
 using System;
@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 
 namespace SipaaKernel
 {
+    /**
+    This class is useless, for the moment.
     public class Setup
     {
         int rectX = VBE.getModeInfo().width / 2 - 500 / 2;
@@ -55,5 +57,5 @@ namespace SipaaKernel
                 Cosmos.System.Power.Reboot();
             }
         }
-    }
+    }**/
 }

@@ -1,5 +1,5 @@
 ﻿using Cosmos.System;
-using PrismGL2D;
+using SipaaGL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,11 +35,11 @@ namespace SipaaKernel.UI.Widgets
                 }else if (Image != null && !String.IsNullOrEmpty(Text))
                 {
                     _Graphics.DrawImage(8, (int)_Graphics.Height / 2 - (int)Image.Height / 2, Image, true);
-                    _Graphics.DrawString((int)Width / 2, (int)Height / 2, Text, Font.Fallback, GetCurrentTheme().GetAccentForegroundColor(), true);
+                    _Graphics.DrawStringBF((int)Width / 2, (int)Height / 2, Text, BitFont.Fallback, GetCurrentTheme().GetAccentForegroundColor(), true);
                 }
                 else if (Image == null)
                 {
-                    _Graphics.DrawString((int)Width / 2, (int)Height / 2, Text, Font.Fallback, GetCurrentTheme().GetAccentForegroundColor(), true);
+                    _Graphics.DrawStringBF((int)Width / 2, (int)Height / 2, Text, BitFont.Fallback, GetCurrentTheme().GetAccentForegroundColor(), true);
                 }
             }
             else
@@ -59,11 +59,11 @@ namespace SipaaKernel.UI.Widgets
                 else if (Image != null && !String.IsNullOrEmpty(Text))
                 {
                     _Graphics.DrawImage(8, (int)_Graphics.Height / 2 - (int)Image.Height / 2, Image, true);
-                    _Graphics.DrawString((int)Width / 2, (int)Height / 2, Text, Font.Fallback, GetCurrentTheme().GetForegroundColor(), true);
+                    _Graphics.DrawStringBF((int)Width / 2, (int)Height / 2, Text, BitFont.Fallback, GetCurrentTheme().GetForegroundColor(), true);
                 }
                 else if (Image == null)
                 {
-                    _Graphics.DrawString((int)Width / 2, (int)Height / 2, Text, Font.Fallback, GetCurrentTheme().GetForegroundColor(), true);
+                    _Graphics.DrawStringBF((int)Width / 2, (int)Height / 2, Text, BitFont.Fallback, GetCurrentTheme().GetForegroundColor(), true);
                 }
             }
             return _Graphics;
