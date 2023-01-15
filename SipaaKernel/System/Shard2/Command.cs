@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SipaaKernel.System.Shard2
 {
@@ -12,6 +8,6 @@ namespace SipaaKernel.System.Shard2
         public abstract string Description { get; }
         public abstract string Usage { get; }
 
-        public abstract CommandResult Execute(Console c, List<string> args);
+        public abstract CommandResult Execute(List<string> args);
     }
 }

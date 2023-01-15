@@ -96,12 +96,35 @@ namespace SipaaGL
 			return FromARGB(A, R, G ,B);
 		}
 
-		/// <summary>
-		/// Converts the color to be only in grayscale.
-		/// </summary>
-		/// <param name="UseAlpha">Allow alpha when converting.</param>
-		/// <returns>Grayscale color.</returns>
-		public Color ToGrayscale(bool UseAlpha)
+        public static Color FromConsleColor(ConsoleColor Color)
+        {
+            return Color switch
+            {
+                ConsoleColor.Black => Black,
+                ConsoleColor.DarkBlue => Blue - 64,
+                ConsoleColor.DarkGreen => Green - 64,
+                ConsoleColor.DarkCyan => Cyan - 64,
+                ConsoleColor.DarkRed => Red - 64,
+                ConsoleColor.DarkMagenta => Magenta - 64,
+                ConsoleColor.DarkYellow => Yellow - 64,
+                ConsoleColor.Gray => LightGray,
+                ConsoleColor.DarkGray => DeepGray - 64,
+                ConsoleColor.Blue => Blue,
+                ConsoleColor.Green => Green,
+                ConsoleColor.Cyan => Cyan,
+                ConsoleColor.Red => Red,
+                ConsoleColor.Magenta => Magenta,
+                ConsoleColor.Yellow => Yellow,
+                ConsoleColor.White => White,
+                _ => Black,
+            };
+        }
+        /// <summary>
+        /// Converts the color to be only in grayscale.
+        /// </summary>
+        /// <param name="UseAlpha">Allow alpha when converting.</param>
+        /// <returns>Grayscale color.</returns>
+        public Color ToGrayscale(bool UseAlpha)
 		{
 			byte Average = (byte)((R / 3) + (G / 3) + (B / 3));
 			return FromARGB(UseAlpha ? A : (byte)255, Average, Average, Average);
@@ -349,6 +372,9 @@ namespace SipaaGL
 		public static readonly Color White = FromARGB(255, 255, 255, 255);
 		public static readonly Color Black = FromARGB(255, 0, 0, 0);
 		public static readonly Color Red = FromARGB(255, 255, 0, 0);
+        public static readonly Color Cyan = FromARGB(255, 0, 255, 255);
+        public static readonly Color Magenta = FromARGB(255, 255, 0, 255);
+        public static readonly Color Yellow = FromARGB(255, 255, 255, 0); 
 		public static readonly Color Green = FromARGB(255, 0, 255, 0);
 		public static readonly Color Blue = FromARGB(255, 0, 0, 255);
 		public static readonly Color CoolGreen = FromARGB(255, 54, 94, 53);

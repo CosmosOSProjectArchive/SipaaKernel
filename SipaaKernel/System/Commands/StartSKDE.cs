@@ -1,9 +1,7 @@
-﻿using SipaaKernel.System.Shard2;
-using System;
+﻿using Cosmos.System;
+using Cosmos.System.Plugs.System.System;
+using SipaaKernel.System.Shard2;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SipaaKernel.System.Commands
 {
@@ -11,14 +9,14 @@ namespace SipaaKernel.System.Commands
     {
         public override string Name => "starts";
 
-        public override string Description =>"Starts the SKDE desktop";
+        public override string Description => "Starts the SKDE desktop";
 
         public override string Usage => "startx";
 
-        public override CommandResult Execute(Console c, List<string> args)
+        public override CommandResult Execute(List<string> args)
         {
             Kernel.isInGui = true;
-
+            VBEConsole.IsCursorEnabled = false;
             return CommandResult.NeedsUpdateMethodExit;
         }
     }

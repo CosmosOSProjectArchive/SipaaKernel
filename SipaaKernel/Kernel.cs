@@ -1,14 +1,15 @@
-﻿using Sys = Cosmos.System;
-using SipaaKernel.Core;
+﻿using Cosmos.Core;
+using Cosmos.System.Plugs.System.System;
 using SipaaGL;
 using SipaaGL.Extentions;
-using Cosmos.Core;
-using System.IO;
-using SipaaKernel.UI;
-using SipaaKernel.System.CoreApps;
-using SipaaKernel.System;
-using SipaaKernel.System.Shard2;
+using SipaaKernel.Core;
 using SipaaKernel.System.Commands;
+using SipaaKernel.System.CoreApps;
+using SipaaKernel.System.Shard2;
+using SipaaKernel.UI;
+using System;
+using System.IO;
+using Sys = Cosmos.System;
 
 namespace SipaaKernel
 {
@@ -16,7 +17,6 @@ namespace SipaaKernel
     {
         public static VBECanvas c;
         public static bool isInGui = false;
-        public static Console Console;
         static SKDE skde;
 
         /// <summary>
@@ -37,37 +37,38 @@ namespace SipaaKernel
 
         protected override void BeforeRun()
         {
-            // Init graphics
-            c = new();
+            // Bootscreen initialization
+            Console.Clear();
+            c = VBEConsole.Canvas;
 
-            // Init boot screen
             Sys.MouseManager.ScreenWidth = VBE.getModeInfo().width;
             Sys.MouseManager.ScreenHeight = VBE.getModeInfo().height;
             c.DrawImage((int)c.Width / 2 - (int)Assets.BootBitmap.Width / 2, (int)c.Height / 2 - (int)Assets.BootBitmap.Height / 2, Assets.BootBitmap, false);
             c.Update();
 
-            // Run default SipaaKernel boot routines (audio, network & file system)
-            Core.Global.Boot(false);
+            Console.WriteLine($"SipaaKernel V5 Public Beta (version {OSInfo.OSVersion}, build {OSInfo.OSName}\n{CPU.GetAmountOfRAM()}mb of memory on a {CPU.GetCPUBrandString()}");
+            // Start SipaaKernel core
+            Core.Global.Boot();
 
-            // Check if SipaaKernel needs to be installed
-            /**if (!SipaaKernelInstallationManager.IsInstalled)
-            {
-                s = new();
-            }**/
-
-            // Resize the wallpaper & Init a button
-            Assets.Wallpaper = Assets.Wallpaper.Scale(VBE.getModeInfo().width, VBE.getModeInfo().height);
+            // GUI initialization
             skde = new();
             skde.AddAppToLauncher(new SiPaintApp());
-            Cosmos.HAL.Global.PIT.Wait(10000);
 
-            Console = new(c.Width, c.Height);
-            CommandRunner.Commands.Add(new StartSKDE());
+            // Wait
+            Cosmos.HAL.Global.PIT.Wait(5000);
+
+            Console.Clear();
+
+            // Console & console commands initialization
+            Console.WriteLine($"SipaaKernel V5 Public Beta (Console Mode Only) (Version {OSInfo.OSVersion}, Build {OSInfo.OSBuild})");
+            Console.WriteLine("Happy new year, SipaaKernel user!");
+
+            VBEConsole.Init();
+
             CommandRunner.Commands.Add(new SysInfo());
             CommandRunner.Commands.Add(new Shutdown());
-            Console.WriteLine($"SipaaKernel Codename 'SipaaKernel V5' (Version {OSInfo.OSVersion}, Build {OSInfo.OSBuild})");
-            Console.WriteLine($"Happy new year, SipaaKernel User!");
-            Console.BeforeCommand();
+            CommandRunner.Commands.Add(new StartSKDE());
+
         }
 
         protected override void Run()
@@ -77,7 +78,7 @@ namespace SipaaKernel
                 if (isInGui)
                 {
                     c.DrawImage(0, 0, Assets.Wallpaper, false);
-                    c.DrawStringBF(10, (int)c.Height - 112, $"{c.GetFPS()} FPS (This build has been compiled using SipaaGL)\nSipaaKernel Confidential Build. Any leaks found of this build\nwill become BIG PENALITIES. (Build " + OSInfo.OSBuild + ")", BitFont.Fallback, Color.White);
+                    c.DrawStringBF(10, (int)c.Height - 112, $"{c.GetFPS()} FPS (This build has been compiled using SipaaGL)\nSipaaKernel Public Beta (Build " + OSInfo.OSBuild + ")", BitFont.Fallback, Color.White);
 
                     foreach (var w in WindowManager.Windows)
                     {
@@ -90,13 +91,40 @@ namespace SipaaKernel
 
                     c.DrawFilledRectangle((int)Sys.MouseManager.X, (int)Sys.MouseManager.Y, 8, 12, 0, Color.White);
                     c.Update();
+
                 }
                 else
                 {
-                    Console.Update();
-                    c.Update();
+                    Console.Write("shard@skuser:> ");
+                    var input = Console.ReadLine();
+                    var cmdresult = System.Shard2.CommandRunner.FindAndRunCommand(null, input);
+                    if (cmdresult == CommandResult.NotFinded)
+                    {
+                        Console.WriteLine("The command than you typed can't be found.");
+                    }
+                    else if (cmdresult == CommandResult.Error)
+                    {
+                        Console.WriteLine("The command you runned ran into an error.");
+                    }
+                    else if (cmdresult == CommandResult.InvalidArgs)
+                    {
+                        Console.WriteLine("The command has been found but the arguments is invalid.");
+                    }
+                    else if (cmdresult == CommandResult.Fatal)
+                    {
+                        Console.WriteLine("The command you runned ran into an fatal error.");
+                        Console.WriteLine("The system needs to be rebooted.");
+                        Console.WriteLine("Press any key to reboot.");
+                        Console.ReadKey();
+                        Cosmos.System.Power.Reboot();
+                    }
+                    else if (cmdresult == CommandResult.NeedsUpdateMethodExit)
+                    {
+                        return;
+                    }
                 }
-            }catch (global::System.Exception e)
+            }
+            catch (global::System.Exception e)
             {
                 KernelPanic(0x192833);
             }

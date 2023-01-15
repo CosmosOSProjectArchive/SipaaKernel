@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SipaaKernel.System.Shard2
 {
@@ -10,7 +6,7 @@ namespace SipaaKernel.System.Shard2
     {
         public static List<Command> Commands = new List<Command>();
 
-        public static CommandResult FindAndRunCommand(Console c, string commandLine)
+        public static CommandResult FindAndRunCommand(object c, string commandLine)
         {
             // Get arguments
             string[] args = commandLine.Split(' ');
@@ -36,7 +32,7 @@ namespace SipaaKernel.System.Shard2
 
             if (finded)
             {
-                return cmdToRun.Execute(c, argsList);
+                return cmdToRun.Execute(argsList);
             }
             else
             {

@@ -1,15 +1,9 @@
-﻿using SipaaGL;
+﻿using Cosmos.Core;
+using SipaaGL;
+using SipaaKernel.Core;
 using SipaaKernel.UI;
 using SipaaKernel.UI.Widgets;
-using static SipaaKernel.UI.SysTheme2.ThemeManager;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SipaaKernel.Core;
-using Cosmos.Core;
-using SipaaKernel.UI.SysTheme2;
 
 namespace SipaaKernel
 {
@@ -27,7 +21,7 @@ namespace SipaaKernel
         {
             Button btn = new();
 
-            btn.OnClick = (x,y) => { app.AppMain(); };
+            btn.OnClick = (x, y) => { app.AppMain(); };
             btn.Height = 40;
             btn.Width = 40;
             btn.X = currentX;

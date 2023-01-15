@@ -40,7 +40,7 @@ namespace SipaaKernel.System.CoreApps
                 if (CursorUtil.IsCursorOnRectangle(w.X, w.Y + (int)Window.TitleBarHeight + (int)m.Height, paintGraphics.Width, paintGraphics.Height) && MouseManager.MouseState == MouseState.Left)
                 {
                     var x = MouseManager.X - w.X;
-                    var y = MouseManager.Y - Window.TitleBarHeight - w.Y;
+                    var y = MouseManager.Y - Window.TitleBarHeight - m.Height - w.Y;
 
                     paintGraphics[(int)x, (int)y] = CurrentColor;
                 }

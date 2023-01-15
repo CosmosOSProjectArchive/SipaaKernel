@@ -1,16 +1,4 @@
-﻿using Cosmos.Core;
-using Cosmos.System.FileSystem.VFS;
-using SipaaGL;
-using SipaaGL.Extentions;
-using SipaaKernel.Core;
-using SipaaKernel.UI.Widgets;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SipaaKernel
+﻿namespace SipaaKernel
 {
     /**
     This class is useless, for the moment.

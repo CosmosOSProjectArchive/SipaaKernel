@@ -1,9 +1,6 @@
 ﻿using SipaaKernel.System.Shard2;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SipaaKernel.System.Commands
 {
@@ -15,10 +12,10 @@ namespace SipaaKernel.System.Commands
 
         public override string Usage => "shutdown";
 
-        public override CommandResult Execute(Console c, List<string> args)
+        public override CommandResult Execute(List<string> args)
         {
-            c.Clear();
-            c.WriteLine("Goodbye!");
+            Console.Clear();
+            Console.WriteLine("Goodbye!");
             Cosmos.HAL.Global.PIT.Wait(3000);
             Cosmos.System.Power.Shutdown();
             return CommandResult.Sucess;

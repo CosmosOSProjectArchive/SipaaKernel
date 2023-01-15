@@ -66,7 +66,7 @@ namespace SipaaKernel.Core
         /// Default boot routines of SipaaKernel
         /// </summary>
         /// <param name="verbose"></param>
-        public static void Boot(bool verbose = true)
+        public static void Boot(bool verbose = true, bool silentMode = true)
         {
             #region File system initialization
             if (verbose) Console.WriteLine("Initializing file system...");
@@ -77,7 +77,10 @@ namespace SipaaKernel.Core
                 VFSManager.RegisterVFS(fs, false);
             }catch (Exception ex)
             {
-                HangOnExceptionIfVerbose(ex, "File system", verbose);
+                if (!silentMode)
+                {
+                    HangOnExceptionIfVerbose(ex, "File system", verbose);
+                }
             }
             #endregion
             #region Network initialization
@@ -87,7 +90,10 @@ namespace SipaaKernel.Core
                 _ = new DHCPClient().SendDiscoverPacket();
             }catch (Exception ex)
             {
-                HangOnExceptionIfVerbose(ex, "Network", verbose);
+                if (!silentMode)
+                {
+                    HangOnExceptionIfVerbose(ex, "Network", verbose);
+                }
             }
             #endregion
             #region Audio initialization
@@ -105,11 +111,14 @@ namespace SipaaKernel.Core
             }
             catch (Exception ex)
             {
-                HangOnExceptionIfVerbose(ex, "Audio", verbose);
+                if (!silentMode)
+                {
+                    HangOnExceptionIfVerbose(ex, "Audio", verbose);
+                }
             }
             #endregion
             #region Final operations
-            if (verbose)
+            if (verbose && !silentMode)
             {
                 Console.WriteLine("SipaaKernel booted sucessfully! Press any key to continue");
                 Console.ReadKey();

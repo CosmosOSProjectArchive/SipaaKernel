@@ -57,7 +57,11 @@
     <ItemGroup>
       <ProjectReference Include="..\SipaaGL\SipaaGL.csproj" />
       <ProjectReference Include="..\SipaaKernel.Core\SipaaKernel.Core.csproj" />
+      <ProjectReference Include="..\SipaaKernel.Plugs\SipaaKernel.Plugs.csproj" />
       <ProjectReference Include="..\SipaaKernel.UI\SipaaKernel.UI.csproj" />
     </ItemGroup>
 
+	<ItemGroup>
+		<PlugsReference Include="$(MSBuildProjectDirectory)\..\SipaaKernel.Plugs\bin\Debug\net6.0\SipaaKernel.Plugs.dll" />
+	</ItemGroup>
 </Project>

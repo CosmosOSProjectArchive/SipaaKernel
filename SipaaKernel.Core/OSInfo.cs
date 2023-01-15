@@ -10,7 +10,7 @@ namespace SipaaKernel.Core
     {
         public const string OSName = "SipaaKernel";
         public const double OSVersion = 23.01;
-        public const double OSBuild = 2301.12;
+        public const double OSBuild = 2301.15;
         public const bool IsPreReleaseOS = true;
     }
 }
